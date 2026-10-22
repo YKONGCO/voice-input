@@ -1,0 +1,208 @@
+@import 'tailwindcss';
+@plugin 'tailwind-scrollbar';
+
+:root {
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* iOS风格颜色系统 - 精确的浅色主题配色 */
+
+  /* 系统颜色 - iOS官方调色板 (2023年标准) */
+  --system-blue: #007AFF;        /* 主蓝色，用于主要操作 */
+  --system-green: #34C759;       /* 成功状态，确认操作 */
+  --system-indigo: #5856D6;      /* 次要强调色 */
+  --system-orange: #FF9500;      /* 警告状态 */
+  --system-pink: #FF2D55;        /* 强调色 */
+  --system-purple: #AF52DE;      /* 特殊状态 */
+  --system-red: #FF3B30;         /* 错误状态，破坏性操作 */
+  --system-teal: #5AC8FA;        /* 信息状态 */
+  --system-yellow: #FFCC00;      /* 注意状态 */
+  --system-cyan: #32D74B;       /* 快捷键设置 */
+
+  /* 灰度系统 - iOS精确灰度值 */
+  --gray-1: #8E8E93;             /* 次要文本，图标 */
+  --gray-2: #AEAEB2;             /* 三级文本，禁用状态 */
+  --gray-3: #C7C7CC;             /* 分隔线，边框 */
+  --gray-4: #D1D1D6;             /* 轻边框，背景 */
+  --gray-5: #E5E5EA;             /* 表面背景 */
+  --gray-6: #F2F2F7;             /* 主背景 */
+
+  /* 背景颜色 - 纯色为主，减少透明度 */
+  --bg-primary: #FFFFFF;         /* 主背景，纯白色 */
+  --bg-secondary: #F2F2F7;       /* 次级背景，iOS系统灰色 */
+  --bg-tertiary: #FFFFFF;        /* 三级背景 */
+
+  /* 表面颜色 (用于卡片、面板等) */
+  --surface-primary: #FFFFFF;    /* 主要表面，白色 */
+  --surface-secondary: #F2F2F7;  /* 次级表面，浅灰色 */
+  --surface-tertiary: #E5E5EA;   /* 三级表面，边框灰色 */
+
+  /* 文本颜色 - 优化对比度 */
+  --text-primary: #000000;       /* 主要文本，黑色，对比度21:1 */
+  --text-secondary: #3C3C43;     /* 次级文本，深灰色，对比度8.6:1 */
+  --text-tertiary: #8E8E93;      /* 三级文本，iOS标准灰色 */
+  --text-quaternary: #C7C7CC;    /* 四级文本，禁用状态 */
+  --text-on-primary: #FFFFFF;    /* 彩色背景上的文本 */
+
+  /* 边框和分隔线 */
+  --border-primary: #C6C6C8;     /* 主要边框，iOS标准分隔线色 */
+  --border-secondary: #E5E5EA;   /* 次级边框 */
+  --separator: #C6C6C8;          /* 分隔线颜色 */
+
+  /* 交互状态 - 精确的透明度叠加 */
+  --system-blue-light: rgba(0, 122, 255, 0.12);  /* 蓝色叠加，10%不透明度 */
+  --system-red-light: rgba(255, 59, 48, 0.12);   /* 红色叠加 */
+  --system-green-light: rgba(52, 199, 89, 0.12); /* 绿色叠加 */
+  --system-orange-light: rgba(255, 149, 0, 0.12); /* 橙色叠加 */
+  --system-purple-light: rgba(175, 82, 222, 0.12); /* 紫色叠加 */
+  --system-indigo-light: rgba(88, 86, 214, 0.12); /* 靛蓝色叠加 */
+  --system-cyan-light: rgba(50, 215, 75, 0.12); /* 青色叠加 */
+
+  /* 叠加层 */
+  --overlay-light: rgba(255, 255, 255, 0.85);    /* 浅色叠加 */
+  --overlay-dark: rgba(0, 0, 0, 0.4);            /* 深色叠加，弹窗背景 */
+
+  /* 阴影效果 - iOS精确阴影 */
+  --shadow-sm: 0px 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0px 4px 16px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0px 8px 24px rgba(0, 0, 0, 0.16);
+
+  /* 模糊效果 - iOS毛玻璃效果 */
+  --blur-sm: blur(10px);
+  --blur-md: blur(20px);
+  --blur-lg: blur(30px);
+
+  /* 角色选择器hover状态 */
+  --role-hover-bg: rgba(0, 0, 0, 0.04);
+
+  /* 保留原有变量 (兼容性) */
+  --accent-color: var(--system-blue);
+
+  /* Versus风格补充变量 */
+  --versus-border-subtle: 0.5px solid rgba(0, 0, 0, 0.05);
+  --versus-border-light: 0.5px solid rgba(0, 0, 0, 0.08);
+  --versus-surface-1: rgba(255, 255, 255, 0.98);
+  --versus-surface-2: rgba(250, 250, 250, 0.98);
+  --versus-surface-3: rgba(245, 245, 245, 0.98);
+  --versus-shadow-subtle: 0 1px 3px rgba(0, 0, 0, 0.05);
+  --versus-shadow-light: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --versus-animation-timing: cubic-bezier(0.2, 0, 0, 1);
+  --versus-transition-fast: 150ms var(--versus-animation-timing);
+  --versus-transition-normal: 250ms var(--versus-animation-timing);
+  --versus-transition-slow: 350ms var(--versus-animation-timing);
+}
+
+
+html, body {
+  background: transparent;
+  background-color: transparent;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+#root {
+  background: transparent;
+  background-color: transparent;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+
+/* Windows 特定样式处理 */
+@media (prefers-color-scheme: light) {
+  body {
+    background: transparent !important;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    background: transparent !important;
+  }
+}
+
+/* 自定义滚动条 - 主题支持 */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gray-4);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gray-3);
+}
+
+/* 拖动区域 */
+.drag-region {
+  -webkit-app-region: drag;
+}
+
+.no-drag {
+  -webkit-app-region: no-drag;
+}
+
+/* 自定义滚动条样式 */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gray-3);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gray-2);
+}
+
+/* 确保容器使用合适的最小尺寸 */
+
+
+/* iOS风格动画 */
+.transition-all {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Versus风格平滑动画 */
+.transition-smooth {
+  transition: all var(--versus-transition-normal);
+}
+
+/* 按钮按压效果 */
+button:active {
+  transform: scale(0.95);
+}
+
+/* 模糊背景动画 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+  }
+  to {
+    opacity: 1;
+    backdrop-filter: var(--blur-lg);
+    -webkit-backdrop-filter: var(--blur-lg);
+  }
+}
+
+.modal-backdrop {
+  animation: fadeIn 0.3s ease-out;
+}
